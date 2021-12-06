@@ -75,6 +75,7 @@ class TodoDetailsVC: UIViewController {
         todoTitleLabel.text = todo.title
         todoDetailsLabel.text = todo.details
         todoImageView.image = todo.image
+        
     }
     
 }

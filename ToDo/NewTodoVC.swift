@@ -21,7 +21,7 @@ class NewTodoVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
         if !isCreation {
             mainButton.setTitle("Edit", for: .normal)
@@ -82,5 +82,17 @@ extension NewTodoVC :  UIImagePickerControllerDelegate & UINavigationControllerD
         let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
         dismiss(animated: true, completion: nil)
         todoImageView.image = image
+    }
+}
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tapGesture = UITapGestureRecognizer(target: self,
+                         action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+
+    @objc func hideKeyboard() {
+        view.endEditing(true)
     }
 }
